@@ -1,0 +1,15 @@
+.connect-wallet, .tw-connected-wallet
+{
+    padding: 3rem 7rem !important;
+    margin-left: 26rem !important;
+    margin-top: 10rem !important;
+}
+
+.tw-connected-wallet{
+    background-color: black !important;
+    
+}
+
+.tw-connected-wallet__balance{
+    color: white !important;
+}
