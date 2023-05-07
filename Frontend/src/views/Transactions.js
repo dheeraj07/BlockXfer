@@ -180,7 +180,7 @@ function TransactionsList() {
                 <th>TransactionID</th>
                 <th>Date</th>
                 <th>Sender</th>
-                <th>Receiver</th>
+                <th>Recipient</th>
                 <th>Token</th>
                 <th>Amount</th>
                 <th>Actions</th>

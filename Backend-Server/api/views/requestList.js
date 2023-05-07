@@ -29,11 +29,13 @@ getSentRequestsData = async (deployPhoneContract, owner) => {
       );
     })
     .map((preLog) => {
+      const currentFullfilledRequest = postPayments.find(request => request.args.transactionNo.toString() === preLog.args.transactionNo.toString());
       return {
         transactionNo: preLog.args.transactionNo.toString(),
         requestedBy: preLog.args.requestedBy,
         requestedFrom: preLog.args.requestedFrom,
         token: preLog.args.token,
+        status: currentFullfilledRequest.args.status,
         amount: ethers.utils.formatUnits(preLog.args.amount, "ether"),
         date: moment
           .unix(preLog.args.date.toString())
@@ -92,11 +94,13 @@ getReceiveRequestsData = async (deployPhoneContract, owner) => {
       );
     })
     .map((preLog) => {
+      const currentFullfilledRequest = postPayments.find(request => request.args.transactionNo.toString() === preLog.args.transactionNo.toString());
       return {
         transactionNo: preLog.args.transactionNo.toString(),
         requestedBy: preLog.args.requestedBy,
         requestedFrom: preLog.args.requestedFrom,
         token: preLog.args.token,
+        status: currentFullfilledRequest.args.status,
         amount: ethers.utils.formatUnits(preLog.args.amount, "ether"),
         date: moment
           .unix(preLog.args.date.toString())

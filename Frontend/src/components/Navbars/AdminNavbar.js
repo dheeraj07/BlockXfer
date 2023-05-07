@@ -40,7 +40,6 @@ function Header() {
             <Nav.Item>
               <Nav.Link
                 className="m-0"
-                href="#pablo"
                 onClick={() => auth.logOut()}
               >
                 Logout

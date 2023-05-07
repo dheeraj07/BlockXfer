@@ -15,12 +15,16 @@ import {
   deployedDAIContractAddress,
   onwerAccountPrivateKey
 } from "../deployedInfo/deployedInfo";
+import "../assets/css/transactions.css";
 import { Button, Table, OverlayTrigger, Tooltip } from "react-bootstrap";
 const phoneContractABI = require("../abi/phoneContractABI.json");
 const tokenContractABI = require("../abi/tokenContractABI.json");
-
-
-import "../assets/css/transactions.css";
+const transactionStatus = {
+  cancelRequest: 0,
+  approveRequest: 1,
+  rejectRequest: 2,
+  claimFunds: 3
+}
 
 function RequestsList() {
   const [requestsData, setRequestsData] = useState();
@@ -385,7 +389,7 @@ function RequestsList() {
                   <tr key={request.transactionNo}>
                     <td style={{ width: "2px" }}>
                       <FontAwesomeIcon
-                        icon={faPaperPlane}
+                        icon={faSatelliteDish}
                         style={{ color: "green" }}
                         className="mr-4 sent-trans"
                       />
@@ -410,7 +414,7 @@ function RequestsList() {
                           className="btn-link btn-xs"
                           href="#pablo"
                           onClick={() =>
-                            initiateCancelRequest(request.transactionNo, 0)
+                            initiateCancelRequest(request.transactionNo, transactionStatus.cancelRequest)
                           }
                           variant="danger"
                         >
@@ -424,10 +428,12 @@ function RequestsList() {
 
             {requestsData
               ? requestsData.sentRequests.fullfilled.map((request) => (
-                  <tr className="success" key={request.transactionNo}>
+                  <tr className={
+                    ethers.BigNumber.from(request.status).eq(ethers.BigNumber.from(transactionStatus.approveRequest.toString())) ? "success" : "danger"
+                  } key={request.transactionNo}>
                     <td style={{ width: "2px" }}>
                       <FontAwesomeIcon
-                        icon={faPaperPlane}
+                        icon={faSatelliteDish}
                         style={{ color: "green" }}
                         className="mr-4 sent-trans"
                       />
@@ -452,7 +458,7 @@ function RequestsList() {
                   <tr key={request.transactionNo}>
                     <td style={{ width: "2px" }}>
                       <FontAwesomeIcon
-                        icon={faSatelliteDish}
+                        icon={faPaperPlane}
                         style={{ color: "red" }}
                         className="mr-4 sent-trans"
                       />
@@ -481,7 +487,7 @@ function RequestsList() {
                               request.amount,
                               request.transactionNo,
                               request.token,
-                              1
+                              transactionStatus.approveRequest
                             )
                           }
                           variant="success"
@@ -506,7 +512,7 @@ function RequestsList() {
                           className="btn-link btn-xs"
                           href="#pablo"
                           onClick={() =>
-                            initiateCancelRequest(request.transactionNo, 0)
+                            initiateCancelRequest(request.transactionNo, transactionStatus.rejectRequest)
                           }
                           variant="danger"
                         >
@@ -520,10 +526,12 @@ function RequestsList() {
 
             {requestsData
               ? requestsData.receivedRequests.fullfilled.map((request) => (
-                  <tr className="success" key={request.transactionNo}>
+                  <tr className={
+                    ethers.BigNumber.from(request.status).eq(ethers.BigNumber.from(transactionStatus.approveRequest.toString())) ? "success" : "danger"
+                  } key={request.transactionNo}>
                     <td style={{ width: "2px" }}>
                       <FontAwesomeIcon
-                        icon={faSatelliteDish}
+                        icon={faPaperPlane}
                         style={{ color: "red" }}
                         className="mr-4 sent-trans"
                       />
@@ -571,7 +579,7 @@ function RequestsList() {
                           className="btn-link btn-xs"
                           href="#pablo"
                           onClick={() =>
-                            initiateClaimRequest(escrowRequest.transactionNo, 3)
+                            initiateClaimRequest(escrowRequest.transactionNo, transactionStatus.claimFunds)
                           }
                           variant="success"
                         >
