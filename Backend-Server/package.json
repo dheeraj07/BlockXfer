@@ -1,5 +1,5 @@
 {
-  "name": "phoneserver",
+  "name": "BlockXfer",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@thirdweb-dev/storage": "^1.1.2",
+    "@thirdweb-dev/storage": "^1.2.11",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "ethers": "^5.7.2",
