@@ -8,6 +8,8 @@
   - [Tech Stack](#tech-stack)
   - [Future Updates](#future-updates)
   - [Backend Functionality](#backend-functionality)
+  - [Screenshots](#screenshots)
+  - [Demo Video](#demo-video)
   - [Getting Started](#getting-started)
     - [Environment Setup](#environment-setup)
       - [Update the Following Files:](#update-the-following-files)
@@ -51,6 +53,22 @@ The Node.js backend application is responsible for:
 1. Mapping phone numbers to blockchain addresses and vice versa.
 2. Verifying phone numbers and registering users.
 3. Acting as a middleware between the frontend and blockchain contracts.
+
+## Screenshots
+
+![Screenshot 1](./scr_shot_1.png)
+
+![Screenshot 2](./scr_shot_2.png)
+
+![Screenshot 3](./scr_shot_3.png)
+
+![Screenshot 4](./scr_shot_4.png)
+
+
+## Demo Video
+
+- https://youtu.be/2AuXJPNly24
+
 
 ## Getting Started
 
